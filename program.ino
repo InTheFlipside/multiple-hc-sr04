@@ -33,7 +33,7 @@ void loop() {
   
   Serial.print(F("Distance Capteur 1 : "));
   Serial.print(distance_mm);
-  Serial.print (F("mm ("));
+  Serial.println (F("mm ("));
 
 
 
