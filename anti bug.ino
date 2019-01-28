@@ -1,8 +1,5 @@
-
 const byte TRIGGER_PIN = 2; // Broche TRIGGER
 const byte ECHO_PIN = 3;    // Broche ECHO
-const byte TRIGGER_PIN2 = 4; // Broche TRIGGER
-const byte ECHO_PIN2 = 5;    // Broche ECHO
 const unsigned long MEASURE_TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
 const float SOUND_SPEED = 340.0 / 1000;
 int verif;
@@ -14,41 +11,56 @@ void setup() {
   pinMode(TRIGGER_PIN, OUTPUT);
   digitalWrite(TRIGGER_PIN, LOW); // La broche TRIGGER doit être à LOW au repos
   pinMode(ECHO_PIN, INPUT);
-
-
-
-    pinMode(TRIGGER_PIN2, OUTPUT);
-  digitalWrite(TRIGGER_PIN2, LOW); // La broche TRIGGER doit être à LOW au repos
-  pinMode(ECHO_PIN2, INPUT);
 }
  
 void loop() {
-  
+
+  if(verif > 3) { verif=0;  }
   digitalWrite(TRIGGER_PIN, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGGER_PIN, LOW);
   long measure = pulseIn(ECHO_PIN, HIGH, MEASURE_TIMEOUT);
   float distance_mm = measure / 2.0 * SOUND_SPEED;
+
   
+  ///////////////////////////////////////////////////////////// MESURE DISTANCE ////////////////////////////
   Serial.print(F("Distance Capteur 1 : "));
   Serial.print(distance_mm);
-  Serial.println (F("mm ("));
+  Serial.println ("mm (");
 
 
+  
+//Serial.println("DEBUT DES VALIDATIONS");
+// delay(2000);
 
+if(distance_mm < 100) {
+ // Serial.print("Une validation !! Mesure actuelle : ");
+  Serial.println(distance_mm);
+// delay(5000);
 
-if(distance_mm < 100) {Serial.println("Une validation !!");
-delay(5000);
   digitalWrite(TRIGGER_PIN, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGGER_PIN, LOW);
   long measure = pulseIn(ECHO_PIN, HIGH, MEASURE_TIMEOUT);
   float distance_mm = measure / 2.0 * SOUND_SPEED;
+  
 
-verif=verif+1;
+ // Serial.print("Deuxieme validation en verification.. ! Mesure actuelle : ");
+  Serial.println(distance_mm);
+ // delay(3000);
 
-if(verif=3) {Serial.println("OH YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES");}
+  
+if(distance_mm < 100) { 
+  verif++;  
+//Serial.print("On augmente Verif:");
+// Serial.println(verif);
+}
 
+
+if(verif>3) {Serial.println("The mesure is good and valable !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");}
+
+Serial.println(verif);
+// delay(2000);
 
   delay(10);
 }
