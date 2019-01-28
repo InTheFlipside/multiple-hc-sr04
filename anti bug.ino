@@ -3,7 +3,7 @@ const byte ECHO_PIN = 3;    // Broche ECHO
 const unsigned long MEASURE_TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
 const float SOUND_SPEED = 340.0 / 1000;
 int verif;
-
+/// UNCHECK DELAY FOR MORE DEBUGGING INFORMATION
 void setup() {
 
   Serial.begin(9600);
