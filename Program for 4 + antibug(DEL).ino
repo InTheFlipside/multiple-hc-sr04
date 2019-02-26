@@ -7,7 +7,7 @@ const byte ECHO_PIN2 = 5;    // Broche ECHO
 // Capteur 3
 const byte TRIGGER_PIN3 = 6; // Broche TRIGGER
 const byte ECHO_PIN3 = 7;    // Broche ECHO
-// Capteur 4
+// Capteur 4 
 const byte TRIGGER_PIN4 = 8; // Broche TRIGGER
 const byte ECHO_PIN4 = 9;    // Broche ECHO
 
