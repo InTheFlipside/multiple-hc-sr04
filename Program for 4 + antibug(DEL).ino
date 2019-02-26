@@ -13,7 +13,7 @@ const byte ECHO_PIN4 = 9;    // Broche ECHO
 
 const byte timetostart = 10;
 
-/// définition des constantes. Pas besoin de définir ça pour chacun (le timeout / vitesse du son ne change pas) 
+/// définition des constantes.Pas besoin de définir ça pour chacun (le timeout / vitesse du son ne change pas) 
 const unsigned long MEASURE_TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
 const float SOUND_SPEED = 340.0 / 1000;
 
